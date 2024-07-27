@@ -1,5 +1,3 @@
-import React from 'react';
-
 const page = ({ params }) => {
     console.log(params.food);
     let { title, description, ratings, feature } = food.find(food => food.id == params.food)

@@ -4,8 +4,8 @@ import { usePathname, useRouter } from "next/navigation";
 
 
 const NavBar = () => {
-    const pathName=usePathname()
-    const router=useRouter()
+    const pathName = usePathname()
+    const router = useRouter()
 
     function logInHandler() {
         router.push('/login')
@@ -26,8 +26,20 @@ const NavBar = () => {
         {
             title: 'Blog',
             path: '/blog'
+        },
+        {
+            title: 'Categories',
+            path: '/categories'
         }
     ]
+
+    if (pathName.includes('dashboard')) {
+
+        return <div className="bg-green-300">
+            <p>dashboard</p>
+        </div>
+    }
+
     return (
         <nav className="bg-slate-300 text-black flex justify-between items-center p-4">
             <h5 className="text-[34px] font-bold">
@@ -37,11 +49,11 @@ const NavBar = () => {
 
             <ul className="flex gap-2">
                 {
-                    links.map(link => <li> <Link className={pathName===link.path && 'text-fuchsia-500'}  href={link.path}> {link.title}</Link> </li>)
+                    links.map(link => <li> <Link className={pathName === link.path && 'text-fuchsia-500'} href={link.path}> {link.title}</Link> </li>)
                 }
             </ul>
 
-            <button  className="bg-green-400 text-white p-3 rounded-xl"> <Link href={'/login'}> log In</Link></button>
+            <button className="bg-green-400 text-white p-3 rounded-xl"> <Link href={'/login'}> log In</Link></button>
         </nav>
     );
 };
