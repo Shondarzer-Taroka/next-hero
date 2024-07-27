@@ -1,24 +1,21 @@
-import Link from 'next/link';
 import React from 'react';
 
-const Blog = () => {
+const page = ({ params }) => {
+    console.log(params.food);
+    let { title, description, ratings, feature } = food.find(food => food.id == params.food)
     return (
-        <div className='grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center'>
-            {
-                food.map(food => <div key={food.id} className='border border-red-400 p-2'>
-                    <h1 className='font-bold text-xl'> {food.title}</h1>
-                    <p>{food.description}</p>
-                    <p>{food.feature}</p>
-                    <p>{food.ratings}</p>
-                    <Link href={`/blog/${food.id}`}><button className='bg-green-400 rounded px-4 py-2 text-white'>view details</button></Link>
-                    
-                </div>)
-            }
+        <div>
+            <div className='border border-red-400 p-2 text-center'>
+                <h1 className='font-bold text-xl'> {title}</h1>
+                <p>{description}</p>
+                <p> <span className='font-bold'>feature: </span>{feature}</p>
+                <p> <span className='font-bold'> ratings:  </span>{ratings}</p>
+            </div>
         </div>
     );
 };
 
-export default Blog;
+export default page;
 
 
 const food = [
@@ -58,4 +55,3 @@ const food = [
         "feature": "Non-Vegetarian"
     }
 ]
-
