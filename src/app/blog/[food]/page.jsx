@@ -1,3 +1,12 @@
+
+ export const genetateMetadata=async({params})=>{
+    const postData=await fetch(``)
+    return { 
+        title:'Post details',
+        description:params.description
+    }
+ }
+
 const page = ({ params }) => {
     console.log(params.food);
     let { title, description, ratings, feature } = food.find(food => food.id == params.food)
